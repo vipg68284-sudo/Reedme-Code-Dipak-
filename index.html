@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Fire Premium Rewards</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #0b0c10;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 15px;
+    }
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background: #12141c;
+      border: 1px solid #2a2e3d;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(255, 170, 0, 0.15);
+      position: relative;
+    }
+    .badge {
+      background: #332300;
+      color: #ffaa00;
+      border: 1px solid #ffaa00;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    h2 {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .sub-title {
+      color: #ffaa00;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+    .input-box {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .input-box input {
+      width: 100%;
+      background: #1a1d28;
+      border: 1px solid #33384a;
+      border-radius: 10px;
+      padding: 12px 15px 12px 40px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+    .input-box ::placeholder {
+      color: #71788e;
+    }
+    .input-box .user-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ffaa00;
+      font-size: 16px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: #1a1d29;
+      border: 2px solid #2d3345;
+      border-radius: 12px;
+      padding: 8px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .card.selected {
+      border-color: #ffaa00;
+      box-shadow: 0 0 10px rgba(255, 170, 0, 0.4);
+    }
+    .card img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+    .check-mark {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 18px;
+      height: 18px;
+      background: #ffaa00;
+      color: #000;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: bold;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .card.selected .check-mark {
+      display: flex;
+    }
+    .claim-btn {
+      width: 100%;
+      background: linear-gradient(90deg, #ff8c00, #ff5500);
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      margin-top: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    .counter-text {
+      color: #8b93a7;
+      font-size: 11px;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    .main-claim-btn {
+      width: 100%;
+      background: linear-gradient(90deg, #ffaa00, #ff5500);
+      border: none;
+      border-radius: 25px;
+      padding: 14px;
+      color: #000;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 136, 0, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Popup Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-box {
+      background: #161822;
+      border: 2px solid #ffaa00;
+      border-radius: 20px;
+      padding: 25px;
+      width: 90%;
+      max-width: 320px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 170, 0, 0.3);
+      position: relative;
+    }
+    .gift-box-img {
+      width: 70px;
+      margin: 10px 0;
+    }
+    .modal-box h3 {
+      color: #ffaa00;
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 5px;
+      letter-spacing: 1px;
+    }
+    .modal-box p {
+      color: #b0b8cb;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+    .modal-btn {
+      width: 100%;
+      background: linear-gradient(90deg, #ffaa00, #ff7700);
+      border: none;
+      border-radius: 12px;
+      padding: 12px;
+      color: #000;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="badge">LIMITED TIME EVENT</div>
+    <h2>FREE FIRE</h2>
+    <div class="sub-title">PREMIUM REWARDS</div>
+
+    <div class="input-box">
+      <span class="user-icon"></span>
+      <input type="text" placeholder="Enter Free Fire UID..." value="2165289294">
+    </div>
+
+    <div class="grid">
+      <!-- Item 1 -->
+      <div class="card selected" onclick="toggleSelect(this)">
+        <span class="check-mark">✓</span>
+        <img src="bundle1.png" alt="Bundle 1">
+        <button class="claim-btn">CLAIM</button>
+      </div>
+      <!-- Item 2 -->
+      <div class="card selected" onclick="toggleSelect(this)">
+        <span class="check-mark">✓</span>
+        <img src="bundle2.png" alt="Bundle 2">
+        <button class="claim-btn">CLAIM</button>
+      </div>
+      <!-- Item 3 -->
+      <div class="card selected" onclick="toggleSelect(this)">
+        <span class="check-mark">✓</span>
+        <img src="bundle3.png" alt="Bundle 3">
+        <button class="claim-btn">CLAIM</button>
+      </div>
+      <!-- Item 4 -->
+      <div class="card" onclick="toggleSelect(this)">
+        <span class="check-mark">✓</span>
+        <img src="emote1.png" alt="Emote 1">
+        <button class="claim-btn">CLAIM</button>
+      </div>
+      <!-- Item 5 -->
+      <div class="card" onclick="toggleSelect(this)">
+        <span class="check-mark">✓</span>
+        <img src="bundle4.png" alt="Bundle 4">
+        <button class="claim-btn">CLAIM</button>
+      </div>
+      <!-- Item 6 -->
+      <div class="card" onclick="toggleSelect(this)">
+        <span class="check-mark">✓</span>
+        <img src="emote2.png" alt="Emote 2">
+        <button class="claim-btn">CLAIM</button>
+      </div>
+    </div>
+
+    <div class="counter-text" id="selectedCount">3 REWARDS SELECTED</div>
+    <button class="main-claim-btn" onclick="openPopup()">CLAIM NOW</button>
+  </div>
+
+  <!-- Congratulations Popup -->
+  <div class="modal-overlay" id="popup">
+    <div class="modal-box">
+      <h3>CONGRATULATIONS!</h3>
+      <img src="gift.png" alt="Gift" class="gift-box-img">
+      <p>Reward claimed!</p>
+      <button class="modal-btn" onclick="redirectToTarget()">OKAY</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleSelect(cardElement) {
+      cardElement.classList.toggle('selected');
+      updateCount();
+    }
+
+    function updateCount() {
+      const selectedCards = document.querySelectorAll('.card.selected');
+      document.getElementById('selectedCount').innerText = selectedCards.length + ' REWARDS SELECTED';
+    }
+
+    function openPopup() {
+      document.getElementById('popup').style.display = 'flex';
+    }
+
+    function redirectToTarget() {
+      // Yahan apna TeraBox ya destination link daalein
+      window.location.href = "https://1024terabox.com/s/1OIqKfe78ijQ04EOtv1LDPQ";
+    }
+  </script>
+
+</body>
+</html>
+
